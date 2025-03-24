@@ -1,2 +1,3 @@
 client.properties
 .env
+__pycache__
