@@ -1,3 +1,4 @@
 client.properties
 .env
 __pycache__
+*.json

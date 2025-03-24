@@ -9,24 +9,14 @@ import json
 import logging
 import time
 from textblob import TextBlob
-logging.basicConfig(level=logging.INFO)  # Or DEBUG
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from common.utils import read_config, init_producer
+from common.utils import read_config, init_producer, delivery_report, produce
 
 def get_from_date(n):
     from_date = (datetime.datetime.now() - datetime.timedelta(days = n)).date()
     from_date_str = datetime.datetime.strftime(from_date, "%Y-%m-%d")
     return from_date_str
-
-# Parse error used for debugging
-def delivery_report(err, msg):
-    if err is not None:
-        logging.error(f"Delivery failed: {err}")
-    else:
-        logging.info(f"Message delivered to {msg.topic()} [{msg.partition()}] at offset {msg.offset()}")
-
-def produce(topic,producer,key,value,timestamp):
-    producer.produce(topic, key = key, value = value, timestamp = timestamp, callback = delivery_report)
 
 def request(news_api, from_date):
     url = (f'https://newsapi.org/v2/everything?'
