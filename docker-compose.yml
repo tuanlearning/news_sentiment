@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  python:
+    build: .
+    volumes:
+      - ./:/opt/news_sentiment/
+    working_dir: /opt/news_sentiment
+    ports:
+      - 8501:8501

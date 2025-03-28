@@ -1,0 +1,6 @@
+textblob==0.17.1
+confluent_kafka==2.8.2
+python-dotenv==0.21.1
+requests==2.31.0
+google-cloud-bigquery==3.30.0
+streamlit==1.23.1
