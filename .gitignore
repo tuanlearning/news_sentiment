@@ -1,4 +1,4 @@
-client.properties
-.env
+# client.properties
+# .env
 __pycache__
-*.json
+# *.json
